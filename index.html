@@ -4,34 +4,534 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hugo Baião | Data Analyst Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
     <!-- Font Awesome for better icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ====== ENHANCED PORTFOLIO STYLES ====== */
+        
+        /* === VARIABLES === */
+        :root {
+            --primary: #818cf8;
+            --primary-dark: #6366f1;
+            --primary-light: #c7d2fe;
+            --secondary: #fbbf24;
+            --accent: #34d399;
+            --dark: #0f172a;
+            --dark-lighter: #1e293b;
+            --gray-dark: #64748b;
+            --gray: #94a3b8;
+            --gray-light: #cbd5e1;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --gradient-1: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
+            --gradient-2: linear-gradient(135deg, #fbbf24 0%, #fb923c 100%);
+            --gradient-3: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+            --border-radius: 12px;
+            --box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            --box-shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --max-width: 1200px;
+        }
+
+        /* === RESET & BASE STYLES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--light);
+            background-color: var(--dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* === ANIMATED BACKGROUND === */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(129, 140, 248, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(192, 132, 252, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(52, 211, 153, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        /* === NAVIGATION === */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-light);
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--gray-light);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -10px rgba(129, 140, 248, 0.5);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--gray);
+            color: var(--gray-light);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        /* === ABOUT SECTION === */
+        .about {
+            padding: 5rem 2rem;
+            background: var(--dark-lighter);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            color: var(--gray-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            color: var(--primary-light);
+            font-weight: 600;
+        }
+
+        .skills-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+        }
+
+        .skills-title {
+            font-size: 1.25rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background: rgba(129, 140, 248, 0.1);
+            border: 1px solid rgba(129, 140, 248, 0.2);
+            padding: 0.75rem;
+            border-radius: 8px;
+            text-align: center;
+            color: var(--primary-light);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .skill-item:hover {
+            background: rgba(129, 140, 248, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* === PROJECTS SECTION === */
+        .projects {
+            padding: 5rem 2rem;
+            background: var(--dark);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--dark-lighter);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: var(--box-shadow);
+        }
+
+        .project-icon-container {
+            background: linear-gradient(135deg, rgba(129, 140, 248, 0.1) 0%, rgba(192, 132, 252, 0.1) 100%);
+            padding: 3rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            color: var(--primary-light);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+
+        .project-description {
+            color: var(--gray-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: rgba(129, 140, 248, 0.1);
+            color: var(--primary-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid rgba(129, 140, 248, 0.2);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            color: var(--primary-light);
+        }
+
+        /* === CONTACT SECTION === */
+        .contact {
+            padding: 5rem 2rem;
+            background: var(--dark-lighter);
+            text-align: center;
+        }
+
+        .contact-description {
+            color: var(--gray-light);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .contact-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(129, 140, 248, 0.3);
+        }
+
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--primary-light);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            color: var(--gray-light);
+            font-size: 0.9rem;
+        }
+
+        /* === FOOTER === */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .footer-text {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .footer-heart {
+            color: var(--secondary);
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header Section with About Me -->
-    <header>
-        <div class="header-content">
+    <!-- Background Pattern -->
+    <div class="bg-pattern"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">HB</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
             <h1>Hugo Baião</h1>
-            <p class="subtitle">Data Analyst & Visualization Specialist</p>
-            
-            <div class="social-links">
-                <a href="https://github.com/hugobaiao" class="github-link" target="_blank">
+            <p class="hero-subtitle">Data Analyst & Visualization Specialist</p>
+            <p class="hero-description">
+                Turning complex data into actionable insights through beautiful visualizations and strategic analysis
+            </p>
+            <div class="hero-buttons">
+                <a href="https://github.com/hugobaiao" target="_blank" class="btn btn-primary">
                     <i class="fab fa-github"></i>
-                    GitHub
+                    View GitHub
                 </a>
-                <a href="https://linkedin.com/in/hugobaiao" class="linkedin-link" target="_blank">
-                    <i class="fab fa-linkedin-in"></i>
+                <a href="https://linkedin.com/in/hugobaiao" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-linkedin"></i>
+                    Connect on LinkedIn
                 </a>
             </div>
-            
-            <div class="about-me">
-                <h2 class="section-title"><i class="fas fa-brain"></i> About Me</h2>
-                <div class="about-content">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
                     <p>
                         I'm a Data Analyst based in Lisbon, passionate about turning data into insights that drive decisions. This portfolio showcases a mix of personal data projects and professional-inspired work (always using 100% fictitious or anonymized data).
                     </p>
@@ -42,170 +542,218 @@
                         I'm constantly expanding my skillset — currently focusing on sharpening my <span class="highlight">SQL</span> and <span class="highlight">Python</span> knowledge.
                     </p>
                 </div>
-            </div>
-
-            <!-- Projects Section -->
-            <div class="projects-section">
-                <h2><i class="fas fa-code-branch"></i> Featured Projects</h2>
-                <div class="projects-grid">
-                    <!-- Project 1 -->
-                    <div class="project-card">
-                        <div class="project-img">
-                            <i class="fas fa-briefcase"></i>
-                            <span>Job Listings Website</span>
-                        </div>
-                        <div class="project-content">
-				<h3 class="project-title">Sapienza Agency</h3>
-                            <p class="project-description">Consulting agency focused on AI solutions. This is a collaborative project between me, focusing on the server management and database management side of things, and David Fura, the front-end and consultancy expert.</p>
-                            <div class="project-tags">
-                                <span class="tag">MariaDB</span>
-                                <span class="tag">Python</span>
-                                <span class="tag">Web Development</span>
-                                <span class="tag">Data Analysis</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/sapienza-agency" class="project-link" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                    Company GitHub
-                                </a>
-                                <a href="https://www.sapienza.agency" class="project-link demo-link" target="_blank">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    Company Website
-                                </a>
-                            </div>
-                        </div>
+                <div class="skills-box">
+                    <h3 class="skills-title">Technical Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">Power BI</div>
+                        <div class="skill-item">Excel</div>
+                        <div class="skill-item">Tableau</div>
+                        <div class="skill-item">SQL</div>
+                        <div class="skill-item">Python</div>
+                        <div class="skill-item">MariaDB</div>
                     </div>
-                    <!-- Project 2 -->
-                    <div class="project-card">
-                        <div class="project-img">
-                            <i class="fas fa-beer"></i>
-                            <span>Beer Review Analysis</span>
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Beer Review Analysis</h3>
-                            <p class="project-description">SQL and Python analysis (using matplotlip) regarding the most popular and highest rated beers in the world. Multiple categories and variables available to view in text and in graphical form.</p>
-                            <div class="project-tags">
-                                <span class="tag">MariaDB</span>
-                                <span class="tag">Python</span>
-                                <span class="tag">Data Analysis</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/hugobaiao/beer-reviews" class="project-link" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                    View Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Project 3 -->
-                    <div class="project-card">
-                        <div class="project-img">
-                            <i class="fas fa-newspaper"></i>
-                            <span>Newsfeed Analysis</span>
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Newsfeed Analysis</h3>
-                            <p class="project-description">Analysis of news content and engagement metrics. Explores trends in each topic based on post likes, comments, and user activity in general.</p>
-                            <div class="project-tags">
-                                <span class="tag">Python</span>
-                                <span class="tag">Tableau</span>
-                                <span class="tag">Data Visualization</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/hugobaiao/newsfeed_analysis" class="project-link" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                    View Code
-                                </a>
-                                <a href="https://public.tableau.com/views/newsfeed_analysis_17206077806250/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" class="project-link demo-link" target="_blank">
-                                    <i class="fas fa-chart-line"></i>
-                                    Dashboard
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Project 4 (COVID-19 Dashboard) - Icon instead of image -->
-                    <div class="project-card">
-                        <div class="project-img">
-                            <i class="fas fa-virus"></i>
-                            <span>COVID-19 Dashboard</span>
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">COVID-19 Dashboard</h3>
-                            <p class="project-description">Covid data project with instructions to automatically download data and insert into a MySQL database. Automatic visualizations included.</p>
-                            <div class="project-tags">
-                                <span class="tag">Python</span>
-                                <span class="tag">SQL</span>
-                                <span class="tag">Data Visualization</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/hugobaiao/covid-dashboard" class="project-link" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                    View Code
-                                </a>
-                                <a href="https://disease.sh/" class="project-link demo-link" target="_blank">
-                                    <i class="fa-solid fa-database"></i>
-                                    Raw Data
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Project 5 -->
-                    <div class="project-card">
-                        <div class="project-img">
-                            <i class="fas fa-tasks"></i>
-                            <span>Incomplete Orders Dashboard</span>
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Incomplete Orders Dashboard</h3>
-                            <p class="project-description">Business intelligence dashboard tracking incomplete orders in a sales system. Identifies bottlenecks in the order fulfillment process and provides actionable insights to improve completion rates.</p>
-                            <div class="project-tags">
-                                <span class="tag">Excel</span>
-                                <span class="tag">Power BI</span>
-                                <span class="tag">Business Intelligence</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/hugobaiao/incomplete-orders-dashboard" class="project-link" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                    View Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Contact Section -->
-            <div class="contact-section">
-                <h2><i class="fas fa-envelope"></i> Get In Touch</h2>
-                <p class="contact-text">Interested in collaborating or have questions about my projects? Feel free to reach out!</p>
-                
-                <div class="contact-links">
-                    <a href="mailto:hugoalvesbaiao@gmail.com" class="contact-link">
-                        <i class="fas fa-envelope"></i>
-                        hugoalvesbaiao@gmail.com
-                    </a>
-                    <a href="https://linkedin.com/in/hugobaiao" class="contact-link" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                        LinkedIn
-                    </a>
-                    <a href="https://github.com/hugobaiao" class="contact-link" target="_blank">
-                        <i class="fab fa-github"></i>
-                        GitHub
-                    </a>
                 </div>
             </div>
         </div>
-    </header>
-    
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1: Sapienza Agency -->
+                <div class="project-card">
+                    <div class="project-icon-container">
+                        <i class="fas fa-briefcase project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Sapienza Agency</h3>
+                        <p class="project-description">
+                            Consulting agency focused on AI solutions. This is a collaborative project between me, focusing on the server management and database management side of things, and David Fura, the front-end and consultancy expert.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">MariaDB</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Web Development</span>
+                            <span class="tag">Data Analysis</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/sapienza-agency" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                                Company GitHub
+                            </a>
+                            <a href="https://www.sapienza.agency" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Company Website
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Beer Review Analysis -->
+                <div class="project-card">
+                    <div class="project-icon-container">
+                        <i class="fas fa-beer project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Beer Review Analysis</h3>
+                        <p class="project-description">
+                            SQL and Python analysis (using matplotlib) regarding the most popular and highest rated beers in the world. Multiple categories and variables available to view in text and in graphical form.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">MariaDB</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Data Analysis</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/hugobaiao/beer-reviews" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                                View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Newsfeed Analysis -->
+                <div class="project-card">
+                    <div class="project-icon-container">
+                        <i class="fas fa-newspaper project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Newsfeed Analysis</h3>
+                        <p class="project-description">
+                            Analysis of news content and engagement metrics. Explores trends in each topic based on post likes, comments, and user activity in general.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Tableau</span>
+                            <span class="tag">Data Visualization</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/hugobaiao/newsfeed_analysis" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                                View Code
+                            </a>
+                            <a href="https://public.tableau.com/views/newsfeed_analysis_17206077806250/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" class="project-link">
+                                <i class="fas fa-chart-line"></i>
+                                Dashboard
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: COVID-19 Dashboard -->
+                <div class="project-card">
+                    <div class="project-icon-container">
+                        <i class="fas fa-virus project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">COVID-19 Dashboard</h3>
+                        <p class="project-description">
+                            Covid data project with instructions to automatically download data and insert into a MySQL database. Automatic visualizations included.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">Data Visualization</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/hugobaiao/covid-dashboard" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                                View Code
+                            </a>
+                            <a href="https://disease.sh/" target="_blank" class="project-link">
+                                <i class="fas fa-database"></i>
+                                Raw Data
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Incomplete Orders Dashboard -->
+                <div class="project-card">
+                    <div class="project-icon-container">
+                        <i class="fas fa-tasks project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Incomplete Orders Dashboard</h3>
+                        <p class="project-description">
+                            Business intelligence dashboard tracking incomplete orders in a sales system. Identifies bottlenecks in the order fulfillment process and provides actionable insights to improve completion rates.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Excel</span>
+                            <span class="tag">Power BI</span>
+                            <span class="tag">Business Intelligence</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/hugobaiao/incomplete-orders-dashboard" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                                View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="contact-description">
+                Interested in collaborating or have questions about my projects? Feel free to reach out!
+            </p>
+            <div class="contact-cards">
+                <a href="mailto:hugoalvesbaiao@gmail.com" class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>hugoalvesbaiao@gmail.com</p>
+                </a>
+                <a href="https://linkedin.com/in/hugobaiao" target="_blank" class="contact-card">
+                    <i class="fab fa-linkedin"></i>
+                    <h3>LinkedIn</h3>
+                    <p>Connect with me</p>
+                </a>
+                <a href="https://github.com/hugobaiao" target="_blank" class="contact-card">
+                    <i class="fab fa-github"></i>
+                    <h3>GitHub</h3>
+                    <p>View my code</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 Hugo Baião. All rights reserved.</p>
-            <p class="footer-note">Built with <i class="fas fa-heart"></i> in Lisbon, Portugal</p>
-        </div>
+        <p class="footer-text">
+            &copy; 2025 Hugo Baião. All rights reserved. | Built with <i class="fas fa-heart footer-heart"></i> in Lisbon, Portugal
+        </p>
     </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(15, 23, 42, 0.98)';
+                nav.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.3)';
+            } else {
+                nav.style.background = 'rgba(15, 23, 42, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
